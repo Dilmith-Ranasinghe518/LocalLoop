@@ -78,7 +78,7 @@ export default function ChatRoom() {
     const roomRef = doc(db, "rooms", roomId);
     await updateDoc(roomRef, { [`lastRead.${user?.uid}`]: Timestamp.now() });
 
-    // 🔄 Trigger unread refresh event
+    //  Trigger unread refresh event
     DeviceEventEmitter.emit("chat-read-update");
   } catch (err) {
     console.warn("⚠️ Could not mark as read:", err.message);
@@ -86,7 +86,7 @@ export default function ChatRoom() {
 };
 
 
-  // 🔄 Subscribe to messages
+  //  Subscribe to messages
   useEffect(() => {
     if (!roomId) return;
     if (!isGroupChat) createRoomIfNotExists();
@@ -109,7 +109,7 @@ export default function ChatRoom() {
       await setDoc(roomRef, { roomId, createdAt: serverTimestamp() });
   };
 
-  // ✉️ Send text
+  //  Send text
   const handleSendMessage = async () => {
     const text = textRef.current.trim();
     if (!text) return;
@@ -128,7 +128,7 @@ export default function ChatRoom() {
     setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 200);
   };
 
-  // 📸 Camera capture
+  //  Camera capture
   const takePhoto = async () => {
     const permission = await ImagePicker.requestCameraPermissionsAsync();
     if (permission.status !== "granted") {
@@ -144,7 +144,7 @@ export default function ChatRoom() {
     }
   };
 
-  // 🖼️ Pick image
+  //  Pick image
   const sendImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -155,7 +155,7 @@ export default function ChatRoom() {
     }
   };
 
-  // ⬆️ Upload helper
+  // ⬆ Upload helper
   const sendImageToChat = async (uri) => {
     const blob = await (await fetch(uri)).blob();
     const filename = `${Date.now()}_${user.uid}.jpg`;
@@ -192,8 +192,8 @@ export default function ChatRoom() {
     await markRoomAsRead();
   };
 
-  // 🎤 Record/send voice (iOS fixed)
-// 🎤 Record & send voice note (works on latest iOS + Android)
+  //  Record/send voice (iOS fixed)
+//  Record & send voice note (works on latest iOS + Android)
 const sendVoiceNote = async () => {
   try {
     if (!isRecording) {
@@ -203,7 +203,7 @@ const sendVoiceNote = async () => {
         return;
       }
 
-      // ✅ Correct audio mode setup (Expo SDK 51+)
+      //  Correct audio mode setup (Expo SDK 51+)
       await Audio.setAudioModeAsync({
         allowsRecordingIOS: true,
         playsInSilentModeIOS: true,

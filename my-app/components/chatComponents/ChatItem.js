@@ -70,7 +70,7 @@ export default function ChatItem({ item, router, noBorder }) {
     return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
   };
 
-  // 🧩 preview builder
+  //  preview builder
   const getPreview = () => {
     const msg = item?.lastMessage || "";
     const type = item?.lastMessageType || "text";
@@ -78,21 +78,6 @@ export default function ChatItem({ item, router, noBorder }) {
     const lastTime = item?.lastTime;
     const lastSender = item?.lastSender ;
 
-    // ✅ who sent last message
-    // const senderLabel =
-    //   item?.lastSender === "You"
-    //     ? "You"
-    //     : user?.uid || item?.name || "Salesperson";
-
-
-
-
-  //  const senderLabel =
-  // item?.lastSenderId === user?.uid
-  //   ? "You"
-  //   : item?.lastSender || item?.name || "Salesperson";
-
-      
   let sender_Label = "Salesperson"; // default
 
 if (item?.lastSender === "You") {
@@ -104,7 +89,7 @@ else{
 const senderLabel = sender_Label;
 
 
-    // ✅ message type
+    //  message type
     let preview = msg;
     if (type === "image") preview = "📷 Photo";
     else if (type === "audio") preview = "🎤 Voice Note";
@@ -146,8 +131,6 @@ const senderLabel = sender_Label;
       ).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
     : ""}
 </Text>
-
-
 
         </View>
 
