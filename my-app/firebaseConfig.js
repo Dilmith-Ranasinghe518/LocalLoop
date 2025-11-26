@@ -6,13 +6,13 @@ import { collection, getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC2QK2Ik-6981QQEuNJDe86Bjn5naujHxI",
-  authDomain: "localloop-7c90b.firebaseapp.com",
-  projectId: "localloop-7c90b",
-  storageBucket: "localloop-7c90b.firebasestorage.app",
-  messagingSenderId: "946876713229",
-  appId: "1:946876713229:web:c3a7ada10aaf6ac7f7c844",
-  measurementId: "G-2HFR3BW6X0",
+  apiKey: "YOUR_API_KEY",
+  authDomain: "yourapp.firebaseapp.com",
+  projectId: "your_project_id",
+  storageBucket: "yourapp.appspot.com",
+  messagingSenderId: "your_sender_id",
+  appId: "your_app_id",
+  measurementId: "your_measurement_id",
 };
 
 export const app = initializeApp(firebaseConfig);
@@ -28,4 +28,5 @@ export const userRef = collection(db, "users");
 export const roomRef = collection(db, "rooms");
 
 // for the probe
+
 export const __debug = { firebaseConfig };
