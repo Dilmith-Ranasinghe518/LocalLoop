@@ -80,7 +80,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await signOut(auth); // ✅ real Firebase sign-out; onAuthStateChanged will flip to false/null
+      await signOut(auth); //  real Firebase sign-out; onAuthStateChanged will flip to false/null
     } catch (e) {
       console.log("[Auth] signOut error:", e?.code || e?.message);
     }
