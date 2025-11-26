@@ -10,7 +10,7 @@ import { useAuth  } from "../../context/authContext"; // ✅ import user context
 
 export default function ChatList({ users = [] }) {
   const router = useRouter();
-  const { user } = useAuth(); // ✅ get current user
+  const { user } = useAuth(); //  get current user
 
   if (!ChatItem) {
     console.error("❌ ChatItem component not found. Check import path!");
@@ -21,7 +21,7 @@ export default function ChatList({ users = [] }) {
     );
   }
 
-  // ✅ Sort chats by latest message timestamp
+  //  Sort chats by latest message timestamp
 const sortedUsers = useMemo(() => {
   const validUsers = users.filter((u) => u && (u.userId || u.roomId));
 
@@ -36,15 +36,15 @@ const sortedUsers = useMemo(() => {
       (b?.lastTime?.seconds
         ? new Date(b.lastTime.seconds * 1000)
         : new Date(b?.lastTime || 0));
-    return bTime - aTime; // ✅ newest first
+    return bTime - aTime; //  newest first
   });
 }, [users]);
 
 
-  // ✅ Key extractor
+  //  Key extractor
   const getKey = (item, index) => item.userId || item.roomId || `chat-${index}`;
 
-  // 🧱 Render list
+  //  Render list
   return (
     <View style={styles.container}>
       {sortedUsers.length > 0 ? (
