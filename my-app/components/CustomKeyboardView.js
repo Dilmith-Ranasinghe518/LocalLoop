@@ -77,3 +77,4 @@ export default function CustomKeyboardView({ children, inChat = false }) {
     </KeyboardAvoidingView>
   );
 }
+
